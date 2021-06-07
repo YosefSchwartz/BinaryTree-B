@@ -499,31 +499,25 @@ namespace ariel{
             /*
             Output operator-
                 Print this tree.
+                Because i will not present this task, i decide to just print it "inorder"
+                Source: https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
             */
-            friend std::ostream& operator<<(std::ostream& os, const BinaryTree &tree){ //TODO
-                os<<"\nPrint the tree in \"inorder\" -"<<endl;
-
-
+            friend std::ostream& operator<<(std::ostream& os, const BinaryTree &tree){
+                os<<"\nPrint the tree:\n";
                 std::stack<Node *> s;
                 Node *curr = tree.root;
             
-                while (curr != NULL || !s.empty())
-                {
-                    while (curr !=  NULL)
-                    {
+                while (curr != NULL || !s.empty()){
+                    while (curr !=  NULL){
                         s.push(curr);
                         curr = curr->leftSon;
                     }
-            
                     curr = s.top();
                     s.pop();
-            
                     os<< curr->value << " ";
-            
                     curr = curr->rightSon;
-            
                 } 
-            
+                os<<endl;
                 return os;
             }
 
